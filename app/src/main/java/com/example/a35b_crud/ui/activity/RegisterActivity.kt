@@ -43,62 +43,40 @@ class RegisterActivity : AppCompatActivity() {
 
             userViewModel.signup(email,password){
                 success,message,userId ->
-                val userModel = UserModel(
+                if(success){
+                    val userModel = UserModel(
                         userId,
                         email, fName, lName, address, contact
                     )
-                userViewModel.addUserToDatabase(userId,userModel){
-                    success,message ->
-                    if(success){
-                        Toast.makeText(this@RegisterActivity
-                            ,message,Toast.LENGTH_SHORT).show()
-                    }else{
-                        Toast.makeText(this@RegisterActivity
-                            ,message,Toast.LENGTH_SHORT).show()
-                    }
+                    addUser(userModel)
+                }else{
+                    Toast.makeText(this@RegisterActivity,
+                        message,Toast.LENGTH_SHORT).show()
                 }
+
+
             }
-
-//            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-//                if (it.isSuccessful) {
-//
-//                    val userId = auth.currentUser?.uid
-//
-//                    val userModel = UserModel(
-//                        userId.toString(),
-//                        email, fName, lName, address, contact
-//                    )
-//
-//                    reference.child(userId.toString()).setValue(userModel)
-//                        .addOnCompleteListener {
-//                            if (it.isSuccessful) {
-//                                Toast.makeText(
-//                                    this@RegisterActivity,
-//                                    "REGISTRATION SUCCESS", Toast.LENGTH_SHORT
-//                                ).show()
-//                            } else {
-//                                Toast.makeText(
-//                                    this@RegisterActivity,
-//                                    it.exception?.message, Toast.LENGTH_SHORT
-//                                ).show()
-//                            }
-//                        }
-//
-//
-//                } else {
-//                    Toast.makeText(
-//                        this@RegisterActivity,
-//                        it.exception?.message, Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+    }
+
+
+
+    fun addUser(userModel: UserModel){
+        userViewModel.addUserToDatabase(userModel.userId,userModel){
+                success,message ->
+            if(success){
+                Toast.makeText(this@RegisterActivity
+                    ,message,Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this@RegisterActivity
+                    ,message,Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
