@@ -11,6 +11,7 @@ import com.example.a35b_crud.databinding.ActivityRegisterBinding
 import com.example.a35b_crud.model.UserModel
 import com.example.a35b_crud.repository.UserRepository
 import com.example.a35b_crud.repository.UserRepositoryImpl
+import com.example.a35b_crud.utils.LoadingUtils
 import com.example.a35b_crud.viewmodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -21,6 +22,8 @@ class RegisterActivity : AppCompatActivity() {
 
     lateinit var userViewModel: UserViewModel
 
+    lateinit var loadingUtils: LoadingUtils
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,12 +31,16 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         val userRepository = UserRepositoryImpl()
 
         userViewModel = UserViewModel(userRepository)
 
+        loadingUtils = LoadingUtils(this)
 
         binding.signUp.setOnClickListener {
+            loadingUtils.show()
             var email: String = binding.registerEmail.text.toString()
             var password: String = binding.registerPassword.text.toString()
             var fName: String = binding.registerFname.text.toString()
@@ -50,6 +57,7 @@ class RegisterActivity : AppCompatActivity() {
                     )
                     addUser(userModel)
                 }else{
+                    loadingUtils.dismiss()
                     Toast.makeText(this@RegisterActivity,
                         message,Toast.LENGTH_SHORT).show()
                 }
@@ -66,7 +74,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 
-
     fun addUser(userModel: UserModel){
         userViewModel.addUserToDatabase(userModel.userId,userModel){
                 success,message ->
@@ -77,6 +84,7 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this@RegisterActivity
                     ,message,Toast.LENGTH_SHORT).show()
             }
+            loadingUtils.dismiss()
         }
     }
 }
