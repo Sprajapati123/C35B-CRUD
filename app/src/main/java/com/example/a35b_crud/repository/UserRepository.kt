@@ -20,4 +20,13 @@ interface UserRepository {
 
     fun getCurrentUser() : FirebaseUser?
 
+    fun getUserFromDatabase(userId:String,
+                            callback: (UserModel?, Boolean, String)
+                            -> Unit)
+
+    fun logout(callback: (Boolean, String) -> Unit)
+
+    fun editProfile(userId: String,data:MutableMap<String,Any>,
+                    callback: (Boolean, String) -> Unit)
+
 }
