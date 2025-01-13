@@ -15,8 +15,8 @@ import com.example.a35b_crud.viewmodel.UserViewModel
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
-    lateinit var userViewModel: UserViewModel
-    lateinit var loadingUtils: LoadingUtils
+        lateinit var userViewModel: UserViewModel
+        lateinit var loadingUtils: LoadingUtils
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
