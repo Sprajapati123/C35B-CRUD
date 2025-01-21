@@ -9,6 +9,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
+        tools:listitem="@layout/sample_products"
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:layout_marginStart="1dp"
