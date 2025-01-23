@@ -48,6 +48,7 @@ class AddProductActivity : AppCompatActivity() {
                     loadingUtils.dismiss()
                     Toast.makeText(this@AddProductActivity,
                         message,Toast.LENGTH_LONG).show()
+                    finish()
                 }else{
                     loadingUtils.dismiss()
                     Toast.makeText(this@AddProductActivity,

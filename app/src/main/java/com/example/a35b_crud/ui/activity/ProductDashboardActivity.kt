@@ -36,7 +36,6 @@ class ProductDashboardActivity : AppCompatActivity() {
 
         productViewModel.getAllProduct()
 
-
         productViewModel.allProducts.observe(this){product->
             product?.let {
                 adapter.updateData(it)
@@ -47,10 +46,8 @@ class ProductDashboardActivity : AppCompatActivity() {
             if(loading){
                 binding.progressBar.visibility = View.VISIBLE
             }else{
-
                 binding.progressBar.visibility = View.GONE
             }
-
         }
 
         binding.recycler.adapter = adapter
