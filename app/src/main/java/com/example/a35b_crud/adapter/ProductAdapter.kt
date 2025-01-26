@@ -57,4 +57,8 @@ class ProductAdapter(val context: Context,
         notifyDataSetChanged()
     }
 
+    fun getProductId(position: Int) : String{
+        return data[position].productId
+    }
+
 }
