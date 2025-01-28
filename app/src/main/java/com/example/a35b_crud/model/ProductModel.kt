@@ -8,6 +8,8 @@ data class ProductModel (
     var productName : String = "",
     var productDesc : String = "",
     var price : Int = 0,
+    var imageName : String = "",
+    var imageUrl : String = "",
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
