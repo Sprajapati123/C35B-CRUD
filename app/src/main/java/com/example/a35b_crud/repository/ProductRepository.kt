@@ -1,5 +1,7 @@
 package com.example.a35b_crud.repository
 
+import android.content.Context
+import android.net.Uri
 import com.example.a35b_crud.model.ProductModel
 
 interface ProductRepository {
@@ -27,5 +29,9 @@ interface ProductRepository {
     fun getAllProduct(callback:
                           (List<ProductModel>?,Boolean,
                            String) -> Unit)
+
+    fun uploadImage(context: Context, imageUri: Uri, callback: (String?) -> Unit)
+
+    fun getFileNameFromUri(context: Context, uri: Uri): String?
 
 }

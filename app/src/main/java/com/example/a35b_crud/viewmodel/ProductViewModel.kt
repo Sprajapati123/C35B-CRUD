@@ -1,5 +1,7 @@
 package com.example.a35b_crud.viewmodel
 
+import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import com.example.a35b_crud.model.ProductModel
 import com.example.a35b_crud.repository.ProductRepository
@@ -52,5 +54,9 @@ class ProductViewModel(val repository: ProductRepository) {
                 _loadingState.value = false
             }
         }
+    }
+
+    fun uploadImage(context: Context, imageUri: Uri, callback: (String?) -> Unit){
+        repository.uploadImage(context, imageUri, callback)
     }
 }
