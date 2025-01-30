@@ -28,6 +28,7 @@ class AddProductActivity : AppCompatActivity() {
     lateinit var imageUtils: ImageUtils
 
     var imageUri: Uri? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -47,7 +48,7 @@ class AddProductActivity : AppCompatActivity() {
                 Picasso.get().load(it).into(binding.imageBrowse)
             }
         }
-        binding.browseImage.setOnClickListener {
+        binding.imageBrowse.setOnClickListener {
             imageUtils.launchGallery(this)
         }
         binding.btnAddProduct.setOnClickListener {
@@ -66,6 +67,7 @@ class AddProductActivity : AppCompatActivity() {
     }
 
     private fun uploadImage() {
+        loadingUtils.show()
         imageUri?.let { uri ->
             productViewModel.uploadImage(this, uri) { imageUrl ->
                 Log.d("checpoirs", imageUrl.toString())
@@ -96,12 +98,13 @@ class AddProductActivity : AppCompatActivity() {
                     message, Toast.LENGTH_LONG
                 ).show()
                 finish()
+                loadingUtils.dismiss()
             } else {
                 Toast.makeText(
                     this@AddProductActivity,
                     message, Toast.LENGTH_LONG
                 ).show()
-
+                loadingUtils.dismiss()
             }
         }
     }

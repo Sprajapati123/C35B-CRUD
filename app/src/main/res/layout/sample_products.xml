@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -10,34 +11,69 @@
         android:layout_margin="12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:padding="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/getImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/placeholder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/displayName"
-                android:text="Product name"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Product name"
+                app:layout_constraintStart_toEndOf="@+id/getImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/displayPrice"
-                android:text="Product price"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Product price"
+                app:layout_constraintStart_toEndOf="@+id/getImage"
+                app:layout_constraintTop_toBottomOf="@+id/displayDesc" />
+
             <TextView
                 android:id="@+id/displayDesc"
-                android:text="Product desc"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="13dp"
+                android:text="Product desc"
+                app:layout_constraintStart_toEndOf="@+id/getImage"
+                app:layout_constraintTop_toBottomOf="@+id/displayName" />
 
             <TextView
                 android:id="@+id/lblEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:text="Edit"
                 android:textColor="@android:color/holo_blue_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/getImage"
+                app:layout_constraintStart_toStartOf="@+id/getImage"
+                tools:layout_editor_absoluteY="37dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>
