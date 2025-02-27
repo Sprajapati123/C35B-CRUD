@@ -10,6 +10,7 @@ import com.example.a35b_crud.R
 import com.example.a35b_crud.databinding.FragmentProfileBinding
 import com.example.a35b_crud.repository.UserRepositoryImpl
 import com.example.a35b_crud.viewmodel.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 
 class ProfileFragment : Fragment() {
@@ -29,7 +30,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var repo =UserRepositoryImpl()
+        var repo =UserRepositoryImpl(FirebaseAuth.getInstance())
         userViewModel = UserViewModel(repo)
 
         var currentUser = userViewModel.getCurrentUser()

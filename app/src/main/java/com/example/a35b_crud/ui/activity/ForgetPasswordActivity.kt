@@ -11,6 +11,7 @@ import com.example.a35b_crud.databinding.ActivityForgetPasswordBinding
 import com.example.a35b_crud.repository.UserRepositoryImpl
 import com.example.a35b_crud.utils.LoadingUtils
 import com.example.a35b_crud.viewmodel.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class ForgetPasswordActivity : AppCompatActivity() {
     lateinit var forgetPasswordBinding: ActivityForgetPasswordBinding
@@ -23,7 +24,7 @@ class ForgetPasswordActivity : AppCompatActivity() {
         setContentView(forgetPasswordBinding.root)
 
         //initializing auth viewmodel
-        var repo = UserRepositoryImpl()
+        var repo = UserRepositoryImpl(FirebaseAuth.getInstance())
         userViewModel = UserViewModel(repo)
 
         //initializing loading

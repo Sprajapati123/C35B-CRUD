@@ -33,7 +33,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
 
-        val userRepository = UserRepositoryImpl()
+        val userRepository = UserRepositoryImpl(FirebaseAuth.getInstance())
 
         userViewModel = UserViewModel(userRepository)
 
