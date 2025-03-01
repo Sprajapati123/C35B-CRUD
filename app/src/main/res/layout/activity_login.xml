@@ -39,6 +39,10 @@
         android:text="Login" />
 
     <TextView
+        android:id="@+id/displayLoginResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
         android:id="@+id/btnSignupnavigate"
         android:layout_gravity="end"
         android:textColor="@android:color/holo_blue_dark"
@@ -46,10 +50,5 @@
         android:layout_height="wrap_content"
         android:text="Don't have an account? Click here" />
 
-    <TextView
-        android:id="@+id/instrumentedCheck"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text" />
+
 </LinearLayout>

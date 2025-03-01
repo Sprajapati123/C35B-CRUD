@@ -42,11 +42,13 @@ class LoginActivity : AppCompatActivity() {
                     loadingUtils.dismiss()
                     var intent = Intent(this@LoginActivity, NavigationActivity::class.java)
                     startActivity(intent)
-                    binding.instrumentedCheck.text = "Login success"
-                    binding.instrumentedCheck.visibility = View.GONE
+
+
 
                     finish()
                 } else {
+                    binding.displayLoginResult.text = "login failed"
+                    binding.displayLoginResult.visibility = View.GONE
                     Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
                     loadingUtils.dismiss()
 

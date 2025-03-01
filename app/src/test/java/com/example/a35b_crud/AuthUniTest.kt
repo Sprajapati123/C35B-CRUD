@@ -1,11 +1,12 @@
 package com.example.a35b_crud
 
-import com.example.a35b_crud.repository.UserRepositoryImpl
+
+import com.example.a35b_crud.repository.AuthRepoImpl
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import junit.framework.TestCase.assertEquals
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
@@ -16,14 +17,15 @@ import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
-class LoginUnitTest {
+
+class AuthUniTest {
     @Mock
     private lateinit var mockAuth: FirebaseAuth
 
     @Mock
     private lateinit var mockTask: Task<AuthResult>
 
-    private lateinit var userRepository: UserRepositoryImpl
+    private lateinit var authRepo: AuthRepoImpl
 
     @Captor
     private lateinit var captor: ArgumentCaptor<OnCompleteListener<AuthResult>>
@@ -31,7 +33,7 @@ class LoginUnitTest {
     @Before
     fun setup() {
         MockitoAnnotations.openMocks(this)
-        userRepository = UserRepositoryImpl(mockAuth)
+        authRepo = AuthRepoImpl(mockAuth)
     }
     @Test
     fun testLogin_Successful() {
@@ -50,7 +52,7 @@ class LoginUnitTest {
         }
 
         // Call the function under test
-        userRepository.login(email, password, callback)
+        authRepo.login(email, password, callback)
 
         verify(mockTask).addOnCompleteListener(captor.capture())
         captor.value.onComplete(mockTask)

@@ -10,38 +10,37 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import com.example.a35b_crud.ui.activity.LoginActivity
+import com.example.a35b_crud.ui.activity.CalculationActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
+import org.junit.runners.JUnit4
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class LoginInstrumentedTest {
+class CalculationInstrumentedTest {
     @get:Rule
-    val testRule = ActivityScenarioRule(LoginActivity::class.java)
-
+    val testRule = ActivityScenarioRule(CalculationActivity::class.java)
     @Test
-    fun checkLogin() {
-        onView(withId(R.id.editEmail)).perform(
-            typeText("sandis@gmail.com")
+    fun checkSum() {
+        onView(withId(R.id.firstValue)).perform(
+            typeText("1")
         )
 
-        onView(withId(R.id.editPassword)).perform(
-            typeText("password")
+        onView(withId(R.id.secondValue)).perform(
+            typeText("1")
         )
 
         closeSoftKeyboard()
 
         Thread.sleep(1500)
 
-        onView(withId(R.id.btnLogin)).perform(
+        onView(withId(R.id.btnCalulate)).perform(
             click()
         )
 
         Thread.sleep(1500)
-        onView(withId(R.id.instrumentedCheck)).check(matches(withText("Login success")))
+        onView(withId(R.id.displaySum)).check(matches(withText("2")))
     }
 
 }

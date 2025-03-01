@@ -50,15 +50,14 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     androidTestImplementation(libs.androidx.espresso.core)
-
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
     implementation("com.cloudinary:cloudinary-android:2.1.0")
     implementation("com.squareup.picasso:picasso:2.8")
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-
-    androidTestImplementation("androidx.test:runner:1.5.2")
-    androidTestImplementation("androidx.test:rules:1.5.0")
-
     testImplementation("org.mockito:mockito-core:5.6.0")
+    testImplementation("org.mockito:mockito-inline:3.12.4")
+
+    androidTestImplementation("androidx.test:runner:1.2.0")
+    androidTestImplementation("androidx.test:rules:1.2.0")
 }
